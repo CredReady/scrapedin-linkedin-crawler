@@ -68,3 +68,6 @@ crawledProfiles/*
 
 # personal config.json
 config.json
+
+# package-lock.json
+package-lock.json
