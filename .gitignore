@@ -65,3 +65,6 @@ cookies.txt
 
 # scraped profiles
 crawledProfiles/*
+
+# personal config.json
+config.json
