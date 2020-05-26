@@ -59,3 +59,9 @@ typings/
 
 # next.js build output
 .next
+
+# cookies files
+cookies.txt
+
+# scraped profiles
+crawledProfiles/*
