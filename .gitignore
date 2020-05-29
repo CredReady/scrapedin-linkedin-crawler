@@ -65,3 +65,6 @@ cookies.txt
 
 # scraped profiles
 crawledProfiles/*
+
+#emacs junk
+*~
