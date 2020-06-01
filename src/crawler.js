@@ -1,4 +1,5 @@
 const logger = require('./logger')
+const fs = require('fs')
 const dependencies = {
   config: require('../config.json'),
   scrapProfile: require('./scrapProfile')
@@ -45,6 +46,7 @@ module.exports = async (profileScraper, rootProfiles, injection) => new Promise(
     } else if (currentProfilesToCrawl.length === 0) {
       logger.info(`a depth of crawling was finished, starting a new depth with ${nextProfilesToCrawl.size} profile(s)`)
 	currentProfilesToCrawl = Array.from(nextProfilesToCrawl)
+	writeCurrentlyProfilesArray(currentProfilesToCrawl, config)
 	if (alreadyCrawledProfiles.size + currentProfilesToCrawl.length > MAX_PROFILES_SCRAPED) {
 	    logger.info('Hit Max Profiles.')
 	    let nNewProfiles = MAX_PROFILES_SCRAPED - alreadyCrawledProfiles.size
@@ -75,4 +77,14 @@ function difference(setA, setB) {
         _difference.delete(elem)
     }
     return _difference
+}
+
+
+function writeCurrentlyProfilesArray(currentProfilesToCrawl, config) {
+  var writeDirectory = config.saveDirectory
+  var writeFileName = `${writeDirectory}/currentProfilesToCrawl.txt`
+  var file = fs.createWriteStream(writeFileName)
+  file.on('error', function(err) { /* error handling */ })
+  currentProfilesToCrawl.forEach((v) => {file.write(v + '\n')})
+  file.end()
 }
