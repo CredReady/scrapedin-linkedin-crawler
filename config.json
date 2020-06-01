@@ -13,6 +13,6 @@
   "rootProfiles": [
     "https://www.linkedin.com/in/charlesproctor1/"
   ],
-    "interProfileWaitTime": 18000,
-    "maxProfilesScraped": 5
+    "interProfileWaitTime": 540000,
+    "maxProfilesScraped": 100
 }
